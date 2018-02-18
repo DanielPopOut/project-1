@@ -11,8 +11,6 @@ coverage/
 
 ##Typescrit compilation ##
 
-*.js.map
-*.js
 
 
 # Garder les fichiers necessaires pour les tests
