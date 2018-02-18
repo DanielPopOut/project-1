@@ -3,7 +3,7 @@
     "description": "Project 1: Debut des tests hehehe",
     "version": "1.0.0",
     "engines": {
-        "node": "6.0.0"
+        "node": "9.5.0"
     },
     "private": true,
     "scripts": {
