@@ -3,9 +3,6 @@
 node_modules/
 false/
 
-# Exclusion des fichiers Javascripts
-out/
-
 # NPM Debug Log
 npm-debug.log
 
