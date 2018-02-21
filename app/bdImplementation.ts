@@ -4,8 +4,7 @@ import assert = require('assert');
 
 export class BdImplementation{
     private MongoClient = mongodb.MongoClient;
-    // private url = 'mongodb://localhost:27017';
-    private url = 'mongodb://popout:popout@ds243768.mlab.com:43768/heroku_bn1503xf';
+    private url = 'mongodb://localhost:27017';
     public dbName = 'myproject';
 
 
