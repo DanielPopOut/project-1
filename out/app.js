@@ -13,6 +13,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const indexRoute = require("./routes/index");
+const bdImplementation_1 = require("./bdImplementation");
 class Application {
     /**
      * Constructor.
@@ -46,6 +47,7 @@ class Application {
      * @method routes
      */
     routes() {
+        let db = new bdImplementation_1.BdImplementation();
         let router;
         router = express.Router();
         // create routes
@@ -55,6 +57,13 @@ class Application {
         this.app.use(router);
         this.app.get('/', function (req, res) {
             res.sendFile(path.join(__dirname + '/angular_build/index.html'));
+        });
+        this.app.post('/deepthoughts', function (req, res) {
+            console.log(req.body);
+            db.insertDocument('deepthoughts', req, res);
+        });
+        this.app.get('/deepthoughts', function (req, res) {
+            db.getDocument('deepthoughts', req, res);
         });
         // Gestion des erreurs
         this.app.use((req, res, next) => {

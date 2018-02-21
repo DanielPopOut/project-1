@@ -13,6 +13,7 @@ import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
 
 import * as indexRoute from './routes/index';
+import { BdImplementation } from './bdImplementation';
 
 export class Application {
 
@@ -55,6 +56,7 @@ export class Application {
      * @method routes
      */
     public routes() {
+        let db = new BdImplementation();
         let router: express.Router;
         router = express.Router();
 
@@ -69,6 +71,16 @@ export class Application {
         this.app.get('/', function (req, res) {
             res.sendFile(path.join(__dirname + '/angular_build/index.html'));
         });
+
+        this.app.post('/deepthoughts', function (req, res) {
+            console.log(req.body);
+            db.insertDocument('deepthoughts', req, res);
+        });
+
+        this.app.get('/deepthoughts', function (req, res) {
+            db.getDocument('deepthoughts', req, res);
+        });
+
 
 
         // Gestion des erreurs
@@ -98,6 +110,8 @@ export class Application {
                 error: {}
             });
         });
+
+
     }
 
     /**
